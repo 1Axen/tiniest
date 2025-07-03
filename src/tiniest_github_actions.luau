@@ -42,7 +42,7 @@ function tiniest_github_actions.configure(
 			local file = extract_filename(err.source)
 			local title = table.concat(test.labels, " > ")
 			
-			print(`::error file="{file}",line={err.line},title="{title}"::{err.message}`)
+			print(`::error file={file},line={err.line},title="{title}"::{err.message}`)
 		end
 	end
 
