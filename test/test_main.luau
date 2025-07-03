@@ -3,6 +3,7 @@
 
 local SAVE_SNAPSHOTS = true
 
+local process = require("@lune/process")
 local tiniest = require("../src/tiniest_for_lune").configure({
 	snapshot_path = "./test/__snapshots__",
 	save_snapshots = SAVE_SNAPSHOTS
@@ -27,7 +28,7 @@ local tests = tiniest.collect_tests(function()
 	-- describe_from_file("tiniest_time")
 	describe_from_file("tiniest")
 end)
-tiniest.run_tests(tests, {})
+local tests = tiniest.run_tests(tests, {})
 
 if SAVE_SNAPSHOTS then
 	print()
@@ -38,4 +39,8 @@ if SAVE_SNAPSHOTS then
 	print()
 	print(string.rep("💾 🛠️  ", 12))
 	print()
+end
+
+if tests.status_tally.fail > 0 then
+	process.exit(1)
 end
