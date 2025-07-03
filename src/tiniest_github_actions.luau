@@ -47,7 +47,7 @@ function tiniest_github_actions.configure(
 				message = `{message}\n{err.code.snippet}`
 			end
 			
-			print(`::error file={file},line={err.line},title={title}::{err.message}`)
+			print(`::error file={file},line={err.line},title={title}::{message}`)
 		end
 	end
 
