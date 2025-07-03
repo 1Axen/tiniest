@@ -44,7 +44,7 @@ function tiniest_github_actions.configure(
 			local message = err.message
 
 			if err.code then
-				message = `{message}\n{err.code.snippet}`
+				message = `{message}\n\t{err.code.snippet}`
 			end
 			
 			message = string.gsub(message, "\n", "%%0A")
