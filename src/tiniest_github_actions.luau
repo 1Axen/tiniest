@@ -47,7 +47,7 @@ function tiniest_github_actions.configure(
 				message = `{message}\n{err.code.snippet}`
 			end
 			
-			message = string.gsub(message, "\n", "%0A")
+			message = string.gsub(message, "\n", "\x0A")
 			print(`::error file={file},line={err.line},title={title}::{message}`)
 		end
 	end
